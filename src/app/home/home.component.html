@@ -1,0 +1,54 @@
+<div class="ui grid ">
+
+  <div class="four wide column ui secondary vertical menu">
+    <app-medicine-category-menu></app-medicine-category-menu>
+
+  </div>
+
+  <div class="twelve wide column">
+    <div class="ui three column grid">
+
+
+      <div *ngFor="let tempMedicine of medicines" class="column">
+        <div class="ui link cards">
+          <div  class="card">
+            <div class="content">
+            </div>
+            <div class="image">
+              <img class="ui fluid image" src="{{ tempMedicine.imageUrl}}">
+            </div>
+            <div class="content">
+              <div routerLink="/view-product/{{tempMedicine.id}}" class="header">{{tempMedicine.name}}</div>
+
+              <div class="description">
+                {{tempMedicine.price | currency: 'USD'}}
+              </div>
+
+              <div class="meta">
+                {{tempMedicine.description}}
+              </div>
+            </div>
+            <div (click)="addToCart(tempMedicine)"  class="ui bottom attached button">
+              <i class="add icon"></i>
+              Add to Cart
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- if Medicines empty display a message-->
+
+
+      <div *ngIf="medicines?.length == 0" class="ui message p">
+        <div class="header">
+          No Medicines Found
+        </div>
+       
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>

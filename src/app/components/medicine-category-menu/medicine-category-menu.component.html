@@ -1,0 +1,5 @@
+<div  *ngFor="let tempCategory of medicineCategories">
+    <a routerLink="/category/{{tempCategory.id}}" routerLinkActive="active" class="item">
+    {{tempCategory.categoryName}}
+    </a>
+</div>

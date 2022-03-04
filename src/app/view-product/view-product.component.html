@@ -1,0 +1,20 @@
+<div class="ui grid">
+
+
+    <div class="six wide">
+        <div class="medicine">
+            <img class="detail-img" src="{{medicine.imageUrl}}" alt="">
+            <h3>{{ medicine.name }}</h3>
+            <div class="price">{{ medicine.price | currency: 'USD'}} </div>
+
+            <button (click)="addToCart()"  class="ui button">Add to cart</button>
+            <hr>
+            <h4>Description</h4>
+            <p>{{ medicine.description }}</p>
+
+            <a routerLink="/medicines" class="mt-5">Back to Product List</a>
+        </div>
+
+       
+    </div>
+</div>

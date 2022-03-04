@@ -1,0 +1,242 @@
+<div class="container ui main-content page-m">
+    <div class="grid ui">
+        <div class="ten wide column">
+            <form class="ui form" [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+                <h4 class="ui dividing header">Customer</h4>
+                <!-- customer form group -->
+                <div formGroupName="customer">
+                    <div class="row">
+                        <div class="field">
+                            <label for="">Name</label>
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <input formControlName="firstName" type="text" placeholder="First Name">
+                                </div>
+                                <div class="field">
+                                    <input formControlName="lastName" type="text" placeholder="Last Name">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="field">
+                            <label for="">Email</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="email" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header">Shipping Address</h4>
+                <!-- customer form group -->
+                <div formGroupName="shippingAddress">
+                    <div class="row">
+                        <div class="field">
+                            <label for="">Street</label>
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <input formControlName="street" type="text" placeholder="Address">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="field">
+                            <label for="">Country</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="country" type="text" placeholder="Country">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="">City</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="city" type="text" placeholder="City">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="">Zip Code</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="postalCode" type="text" placeholder="Zip Code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- add check box -->
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input (change)="copyShippingAddressToBillingAddress($event)" type="checkbox" tabindex="0"
+                            class="">
+                        <label>Shipping same as Billing address</label>
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header">Billing Address</h4>
+                <!-- customer form group -->
+                <div formGroupName="billingAddress">
+                    <div class="row">
+                        <div class="field">
+                            <label for="">Street</label>
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <input formControlName="street" type="text" placeholder="Address">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="field">
+                            <label for="">Country</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="country" type="text" placeholder="Country">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="">City</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="city" type="text" placeholder="City">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="">Zip Code</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="postalCode" type="text" placeholder="Zip Code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit card information -->
+
+                <h4 class="ui dividing header">Billing Information</h4>
+
+                <div formGroupName="creditCard">
+                    <div class="row">
+                        <div class="field">
+
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Card Type</label>
+                                    <div class="input-space">
+                                        <select class="item" formGroupName="cardType">
+                                            <option class="item">Visa</option>
+                                            <option class="item">Master</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="field">
+                            <label for="">Name on Card</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="nameOnCard" type="text" placeholder="Name on card">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="">Card Number</label>
+                            <div class="two fields">
+
+                                <div class="field">
+                                    <input formControlName="cardNumber" type="text" placeholder="Card Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+
+                         
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Expiration Month</label>
+                                    <div class="input-space">
+                                        <select class="item" formGroupName="expirationMonth">
+                                            <option *ngFor="let month of creditCardMonths" class="item">
+                                                {{ month }}
+                                            </option>
+                                           
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="field">
+
+                     
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Expiration Year</label>
+                                    <div class="input-space">
+                                        <select class="item" formGroupName="expirationYear">
+                                            <option *ngFor="let year of creditCardYears" class="item">
+                                                {{ year }}
+                                            </option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+                <!--Order details-->
+                <h3 class="ui dividing header">Review your Order</h3> 
+                <div class="form ui">
+                   
+
+                        <p>Total Quantity: {{totalQuantity}} </p>
+                        
+                        <p>Free Shipping</p>
+                        <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+                </div>
+
+
+                <!-- Submit button -->
+                <div class="text-center">
+                    <button type="submit" class="tiny ui button">Purchase</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
